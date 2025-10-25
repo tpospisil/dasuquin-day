@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Is it a Dasuquin day?</title>
+  <title>YES or NO</title>
   <style>
     html, body {
       margin: 0;
@@ -22,11 +22,17 @@
 <body>
   <div id="answer"></div>
   <script>
-    const startDate = new Date(2025, 9, 24); // Oct 24, 2025 (local)
+    // Use only the local date parts to avoid timezone drift
     const today = new Date();
-    const diffDays = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
+    const localToday = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    const startDate = new Date(2025, 9, 24); // Oct 24, 2025 (month 9 = October)
+    
+    const diffTime = localToday - startDate;
+    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
     const isYesDay = diffDays % 2 === 0;
     const answer = isYesDay ? "YES" : "NO";
+
     document.getElementById("answer").textContent = answer;
     document.body.style.backgroundColor = isYesDay ? "green" : "red";
   </script>
