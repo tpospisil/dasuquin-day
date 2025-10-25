@@ -22,13 +22,11 @@
 <body>
   <div id="answer"></div>
   <script>
-    // Set the reference start date (first "YES" day)
-    const startDate = new Date("2025-10-24T00:00:00-0700")
+    const startDate = new Date(2025, 9, 24); // Oct 24, 2025 (local)
     const today = new Date();
     const diffDays = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
     const isYesDay = diffDays % 2 === 0;
-    
-    const answer = isYesDay ? "YES" : "NO"
+    const answer = isYesDay ? "YES" : "NO";
     document.getElementById("answer").textContent = answer;
     document.body.style.backgroundColor = isYesDay ? "green" : "red";
   </script>
